@@ -115,13 +115,12 @@ resource "aws_launch_configuration" "elb-launch-config" {
   user_data = filebase64("${path.module}/init_elb.bash")
   
   }
-
-
+  
 # Create Auto Scaling Group
 resource "aws_autoscaling_group" "Demo-ASG-tf" {
   name		     = "Demo-ASG-tf"
   desired_capacity   = 1
-  max_size           = 2
+  max_size           = 5
   min_size           = 1
   force_delete       = true
   depends_on 	     = ["aws_lb.ALB-tf"]
